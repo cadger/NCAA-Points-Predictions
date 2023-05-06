@@ -1,3 +1,9 @@
+# Data will be kept separate #
+##############################
+
+*.dta
+*.xls
+
 # Compiled source #
 ###################
 *.com
