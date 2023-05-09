@@ -3,7 +3,7 @@ set more 1;
 clear;
 set mem 150m;
 set matsize 800;
-cd "C:\Users\markl\My Drive\Pool Stuff";
+cd "/Users/chandonadger/Desktop/NCAA Project";
 
 /*Notes for doing predictions next year:
 
@@ -1274,16 +1274,17 @@ replace predictedpoints_538best=0 if out==1;
 
 
 
-keep year team actualppoints playinteam seed less_confident exp_win_prob injury rd2_win oddsregion rank_on_team player totpoints predictedpoints_538best predictedpoints_538alt predictedpoints_538pure predictedpoints_oldoddsmodel dif_in_rankSimon dif_in_rank538 rank naive_rank rank538 points games min pnumbergames poy_mvp;
-order year team playinteam seed pnumbergames rd2_win exp_win_prob rank_on_team player injury poy_mvp totpoints predictedpoints_538best predictedpoints_oldoddsmodel predictedpoints_538alt predictedpoints_538pure  actualppoints less_confident dif_in_rankSimon dif_in_rank538 rank naive_rank  rank538 points games min;
+keep year team actualppoints playinteam seed less_confident exp_win_prob injury  adjoffeff-conf_adjdefeff bestdefense points_allowed sum_stat_opp_def* oddsregion oddstourney rd1_win rd2_win rd3_win rd4_win rd5_win rd6_win rd7_win rank_on_team player totpoints predictedpoints_538best predictedpoints_538alt predictedpoints_538pure predictedpoints_oldoddsmodel dif_in_rankSimon dif_in_rank538 rank naive_rank rank538 points games min pnumbergames poy_mvp ;
+order year team player rank naive_rank rank538 rank_on_team playinteam seed oddsregion oddstourney totpoints pnumbergames points games min rd1_win rd2_win rd3_win rd4_win rd5_win rd6_win rd7_win exp_win_prob adjoffeff-conf_adjdefeff bestdefense points_allowed sum_stat_opp_def* injury poy_mvp predictedpoints_538best predictedpoints_oldoddsmodel predictedpoints_538alt predictedpoints_538pure  actualppoints less_confident dif_in_rankSimon dif_in_rank538;
 rename points season_avg;
 rename exp_win_prob oddsfirstgame;
 
-drop rank naive_rank rank538 oddsregion;
+*drop rank naive_rank rank538 oddsregion;
 
-keep if year==2022;
-gsort -predictedpoints_538best;
-drop playinteam rd2_win oddsfirstgame totpoints less_confident predictedpoints_538pure;
+*keep if year==2022;
+gsort -year player;
+*gsort -predictedpoints_538best;
+*drop playinteam rd2_win oddsfirstgame totpoints less_confident predictedpoints_538pure;
 
 
 
